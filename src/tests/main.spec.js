@@ -1,52 +1,42 @@
-const expect = require('chai').expect;
+/*
+
+Desafio Fizzbuzz
+
+Escreva uma lib que receba um número e:
+
+Se o número for divisível por 3, no lugar do número escreva 'Fizz'
+Se o número for divisível por 5, no lugar do número escreva 'Buzz'
+Se o número for divisível por 3 e 5, no lugar do número escreva 'FizzBuzz'
+Se não for múltiplo de nada, retorna o número
+
+*/
+
+import { expect } from 'chai';
+import { fizzbuzz } from '../main';
 
 describe('Main', () => {
-  let arr;
-
-  // roda uma vez antes do bloco
-  before( () => {
-    // inicia uma conexão no banco
-    // criar um conjunto de dados
+  it('should return "Fizz" when multiple of number is "3"', () => {
+    expect(fizzbuzz(3)).to.equal('Fizz');
+    expect(fizzbuzz(6)).to.equal('Fizz');
+    expect(fizzbuzz(9)).to.equal('Fizz');
   });
 
-  // roda uma vez, depois do bloco
-  after( () => {
-    // fecha a conexão do banco
-    // apagar esse conjunto de dados
+  it('should return "Buzz" when multiple of number is "5"', () => {
+    expect(fizzbuzz(5)).to.equal('Buzz');
+    expect(fizzbuzz(10)).to.equal('Buzz');
+    expect(fizzbuzz(20)).to.equal('Buzz');
   });
 
-  // roda todas as vezes, antes de CADA bloco
-  beforeEach( () => {
-    arr = [1, 2, 3];
+  it('should return "FizzBuzz" when multiple of number is "3" and "5"', () => {
+    expect(fizzbuzz(15)).to.equal('FizzBuzz');
+    expect(fizzbuzz(30)).to.equal('FizzBuzz');
+    expect(fizzbuzz(45)).to.equal('FizzBuzz');
   });
 
-  // roda todas as vezes, depois de CADA bloco
-  afterEach( () => {
-
+  it('should return the number when multiple of number is not "3" or "5"', () => {
+    expect(fizzbuzz(2)).to.equal(2);
+    expect(fizzbuzz(4)).to.equal(4);
+    expect(fizzbuzz(7)).to.equal(7);
+    expect(fizzbuzz(11)).to.equal(11);
   });
-
-  // testar tipos ou se existe (smoke test)
-  it('should be an array', () => {
-    expect(arr).to.be.a('array');
-  });
-
-  it('should return true when pop in the array', () => {
-    expect(arr.pop() === 3).to.be.true;
-  });
-
-  it('should have a size of 4 when push another value to the array', () => {
-    arr.push(4);
-    expect(arr).to.have.lengthOf(4); // 4
-  });
-
-  it('should remove the value 3 when use pop in the array', () => {
-    arr.pop();
-    expect(arr).to.not.include(3);
-  });
-
-  it('should remove the value 3 when use pop in the array', () => {
-    arr.pop();
-    expect(arr).to.have.lengthOf(2); // 2
-  });
-
 });

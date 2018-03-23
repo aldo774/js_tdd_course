@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint src/*.js",
     "prepush": "npm run lint && npm test",
-    "test": "./node_modules/.bin/mocha src/tests/**/*.spec.js"
+    "test": "./node_modules/.bin/mocha src/tests/**/*.spec.js --require babel-register",
+    "test:tdd": "./node_modules/.bin/mocha src/tests/**/*.spec.js --require babel-register --watch"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,8 @@
   },
   "homepage": "https://github.com/aldo774/js_tdd_course#readme",
   "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
